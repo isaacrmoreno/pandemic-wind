@@ -68,7 +68,7 @@ const updateRolls = (prop) => {
 
 // Health Actions
 const getsVaccinated = gainHealth("health")(10);
-const getsCovid = loseHealth("health")(10);
+// const getsCovid = loseHealth("health")(20);
 // Ration Actions
 const groceryShopping = updateRations("rations")(14);
 // Rolls Actions
@@ -79,16 +79,19 @@ const buysBidet = updateRolls("rolls")(100);
 // findsTP(state);
 // getsVaccinated(state);
 
-// const getsCovid = (state) => {
-//   loseHealth("health")(20)(state);
-//   updateRations("rations")(10)(state);
-//   updateRolls("rolls")(5)(state);
-// };
+const getsCovid = () => {
+  const newState = stateControl(loseHealth("health")(20));
+  newState = stateControl(updateRations("rations")(10));
+  newState = stateControl(updateRolls("rolls")(5));
+  return newState;
+};
+
+
 
 // GroceryShopping(steve);
 // const steve = player("steve");
 
-stateControl(getsCovid);
+getsCovid();
 
 // findsTP(steve);
 // getsCovid(steve);
