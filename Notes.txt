@@ -1,0 +1,12 @@
+//player itself. 
+// methods that do something to our player ie plant. 
+// store the state so it can manipulated and viewed.
+
+Player Health 50
+
+// Isolation -5
+// GetsCovid -10 (progress 2days)
+// BuysMask +5
+// GetsVaccine +10
+
+// Win State = 100 days with positive health
