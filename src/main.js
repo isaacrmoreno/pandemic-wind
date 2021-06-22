@@ -2,35 +2,34 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import './js/pandemicWind.js';
+import { stateControl, getsVaccinated, groceryShopping, getsCovid, buysBidet, findsTP } from './js/pandemicWind.js';
 
-$(document).ready(function() {
-  event.preventDefault;
+$(document).ready(function () {
 
-  $('#health').click(function() {
+  $('#health1').click(function () {
     const newState = stateControl(getsVaccinated);
     $('#health-value').text(`Health: ${newState.health}`);
   });
-  $('#health').click(function() {
+  $('#health2').click(function () {
     const newState = stateControl(getsCovid);
     $('#health-value').text(`Health: ${newState.health}`);
     $('#rations-value').text(`Rations: ${newState.rations}`);
     $('#rolls-value').text(`Rolls: ${newState.rolls}`);
   });
-  $('#rations').click(function() {
+  $('#rations3').click(function () {
     const newState = stateControl(groceryShopping);
     $('#rations-value').text(`Rations: ${newState.rations}`);
   });
-  $('#rolls').click(function() {
+  $('#rolls4').click(function () {
     const newState = stateControl(findsTP);
     $('#rolls-value').text(`Rolls: ${newState.rolls}`);
   });
-  $('#rolls').click(function() {
+  $('#rolls5').click(function () {
     const newState = stateControl(buysBidet);
     $('#rolls-value').text(`Rolls: ${newState.rolls}`);
   });
 
-  $('#show-state').click(function() {
+  $('#show-state').click(function () {
     const currentState = stateControl();
     $('#health-value').text(`Health: ${currentState.health}`);
     $('#rations-value').text(`Rations: ${currentState.rations}`);
