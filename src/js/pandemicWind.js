@@ -1,115 +1,121 @@
-export {player, GetsCovid};
 
-const player = function(name) {
-  let state = {
-    name
+// This function stores our state.
+
+const storeState = () => {
+  let currentState = {};
+  return (stateChangeFunction = state => state) => {
+    const newState = stateChangeFunction(currentState);
+    currentState = {...newState};
+    return newState;
   };
-  return;
-  // return { ...GetsCovid(name, "health"),...GetsVaccinated(state) };
 };
+
+const stateControl = storeState();
 
 // default Values
 const _health = 50;
 const _rations = 5;
 const _rolls = 12;
-const _time = 100;
+// const _time = 100;
 
 //Health Modifier (positive)
-const GainHealth = (prop) => {
+const gainHealth = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (player[prop] || _health) + (val || 0)
+      [prop]: (state[prop] || _health) + (val || 0)
     });
   };
 };
 //Health Modifier (negative)
-const LoseHealth = (prop) => {
+const loseHealth = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (player[prop] || _health) - (val || 0)
+      [prop]: (state[prop] || _health) - (val || 0)
     });
   };
 };
 
-// math.random between zero and one.  If random is greater than .98 then player has adverse effect.  Kills player
+// math.random between zero and one.  If random is greater than .98 then state has adverse effect.  Kills state
 //Health Modifier (positive)
-// const BuysMask = (player, prop, val) => {
+// const BuysMask = (state, prop, val) => {
 //   return {
-//     ...player,
-//     [prop]: (player[prop] || _health) + (val || 0)
+//     ...state,
+//     [prop]: (state[prop] || _health) + (val || 0)
 //   }
 // }
 
 //Ration Modifier (positive)
-const UpdateRations = (prop) => {
+const updateRations = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (player[prop] || _rations) + (val || 0)
+      [prop]: (state[prop] || _rations) + (val || 0)
     });
   };
 };
 
 //Rolls Modifier (positive)
-const UpdateRolls = (prop) => {
+const updateRolls = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (player[prop] || _rolls) + (val || 0)
+      [prop]: (state[prop] || _rolls) + (val || 0)
     });
   };
 };
-const steve = player("Steve");
 
 // Health Actions
-const GetsVaccinated = GainHealth("health")(10);
-const GetsCovid = [
-  LoseHealth("health")(20) + 
-  UpdateRolls("rolls")(-5)
-];
-
-// const GetsCovid = {LoseHealth("health")(20) + UpdateRolls("rolls")(-5)};
-
+const getsVaccinated = gainHealth("health")(10);
+const getsCovid = loseHealth("health")(10);
 // Ration Actions
-const GroceryShopping = UpdateRations("rations")(14);
+const groceryShopping = updateRations("rations")(14);
 // Rolls Actions
-const FindsTP = UpdateRolls("rolls")(3);
-const BuysBidet = UpdateRolls("rolls")(100);
+const findsTP = updateRolls("rolls")(3);
+const buysBidet = updateRolls("rolls")(100);
+// groceryShopping(state);
+// buysBidet(state);
+// findsTP(state);
+// getsVaccinated(state);
+
+// const getsCovid = (state) => {
+//   loseHealth("health")(20)(state);
+//   updateRations("rations")(10)(state);
+//   updateRolls("rolls")(5)(state);
+// };
+
 // GroceryShopping(steve);
-// BuysBidet(steve);
-// FindsTP(steve);
-// GetsVaccinated(steve);
-// GetsCovid[0][1](steve);
+// const steve = player("steve");
 
+stateControl(getsCovid);
 
-
-// health, rations, rolls, 
-
+// findsTP(steve);
+// getsCovid(steve);
 // // Effects
-// const GetsCovid = (player, prop) => {
+// const GetsCovid = (state, prop) => {
 //   return {
-//     ...player, 
-//     [prop]: (player[prop] || 0) - 5
-//     rolls: (player.rolls || 0) - 5
+//     ...state, 
+//     [prop]: (state[prop] || 0) - 5
+//     rolls: (state.rolls || 0) - 5
 //   };
 // };
     
-    
-// method that calls other methods with math.random. 
-//health and time. 
-// start at 100 -- 1. per action. 
-// health at 50. +- depending on  action.
-    
-// > let player = { health: 0, mentalHealth: 0, Energy: 0 }
-// > getsCovid(player, "health")
+// > let state = { health: 0, mentalHealth: 0, Energy: 0 }
+// > getsCovid(state, "health")
 // {health: 45, mentalHealth: 0, Energy: 0}
     
 
-// const FindsTP = (player, prop, val) => {
+// const FindsTP = (state, prop, val) => {
 //   return{
-//     ...player, 
-//     [prop]: (player[prop] || _rolls) + (val || 0)
+//     ...state, 
+//     [prop]: (state[prop] || _rolls) + (val || 0)
 //   }
 // }
+
+
+
+
+
+
+
