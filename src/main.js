@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import { stateControl, getsVaccinated, groceryShopping, getsCovid, buysBidet, findsTP } from './js/pandemicWind.js';
 
+
+
 $(document).ready(function () {
 
   $('#health1').click(function () {

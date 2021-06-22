@@ -1,3 +1,19 @@
+
+//6/23/2021
+
+Add Lose Rations & Lose Rolls methods to get Covid.
+
+Add Currency System with Stimulus and unemployment benefits.
+
+Add time functionality. 
+
+What happens when you win? ("welcome to 2023")
+What happens when you die? (play again screen pops up?)
+
+Stretch Goals: Graphics. 
+
+// 6/22/2021 
+
 //player itself. 
 // methods that do something to our player ie plant. 
 // store the state so it can manipulated and viewed.

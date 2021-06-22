@@ -1,4 +1,4 @@
-export default './js/pandemicWind.js';
+// export default './js/pandemicWind.js';
 
 // This function stores our state.
 export const storeState = () => {
