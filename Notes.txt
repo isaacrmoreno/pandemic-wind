@@ -1,9 +1,19 @@
 To do list in order of importance
 Day System
-Randomizer helper
-Story Block Function 
+quarter year array functions
+Write Story by quarter
 
-3 turns. 
+FirstFiveDays = [0, 1]
+FirstQuarter
+SecondQuarter
+ThirdQuarter
+FourthQuarter
+AllFunctions = [getsTp,GroceryShopping,]
+array = [{key: value, key: value},{anotherkey:object}]
+
+random()
+
+4 turns. 
 each turn has 2 options. 
 total of  6 questions. 
 end game. 

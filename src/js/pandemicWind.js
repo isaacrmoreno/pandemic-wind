@@ -18,8 +18,8 @@ export const storeState = () => {
 
 export const stateControl = storeState();
 
-function generateRandom() {
-  return Math.floor(Math.random() * 100) + 1;
+function generateRandom(range) {
+  return Math.floor(Math.random() * range) + 1;
 }
 
 // Core Functions
@@ -137,7 +137,7 @@ export const investInStockMarket = minusSavings("savings")(500);
 
 // Collateral Effects
 export const getsCovid = () => {
-  const chance = generateRandom();
+  const chance = generateRandom(100);
   if (chance > 60) {
     let newState = stateControl(minusPhysicalHealth("physicalHealth")(20));
     newState = stateControl(minusMentalHealth("mentalHealth")(10));
