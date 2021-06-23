@@ -1,6 +1,6 @@
 // export default './js/pandemicWind.js';
 
-// This function stores our state.
+// Helpers
 export const storeState = () => {
   let currentState = {
     physicalHealth: 50,
@@ -17,6 +17,10 @@ export const storeState = () => {
 };
 
 export const stateControl = storeState();
+
+function generateRandom() {
+  return Math.floor(Math.random() * 100) + 1;
+}
 
 // Core Functions
 
@@ -119,24 +123,31 @@ export const minusSavings = (prop) => {
 export const fileForUnemployment = plusMentalHealth("mentalHealth")(1);
 // Physical Health
 export const getsVaccinated = plusPhysicalHealth("physicalHealth")(10);
-export const Workout = plusPhysicalHealth("physicalHealth")(2);
+export const workout = plusPhysicalHealth("physicalHealth")(2);
 // Ration
 export const groceryShopping = plusRations("rations")(14);
+export const bakeSourdough = minusRations("rations")(1);
 // Rolls
 export const buysBidet = plusRolls("rolls")(100);
 // Savings
-export const RenovateKitchen = minusSavings("savings")(800);
-export const InvestInStockMarket = minusSavings("savings")(500);
+export const renovateKitchen = minusSavings("savings")(800);
+export const investInStockMarket = minusSavings("savings")(500);
 
 // ----------- Effects ----------- //
 
 // Collateral Effects
 export const getsCovid = () => {
-  let newState = stateControl(minusPhysicalHealth("physicalHealth")(20));
-  newState = stateControl(minusMentalHealth("mentalHealth")(10));
-  newState = stateControl(minusRations("rations")(10));
-  newState = stateControl(minusRolls("rolls")(5));
-  return newState;
+  const chance = generateRandom();
+  if (chance > 60) {
+    let newState = stateControl(minusPhysicalHealth("physicalHealth")(20));
+    newState = stateControl(minusMentalHealth("mentalHealth")(10));
+    newState = stateControl(minusRations("rations")(10));
+    newState = stateControl(minusRolls("rolls")(5));
+    return newState;
+  } else {
+    let newState = stateControl(minusMentalHealth("mentalHealth")(10));
+    return newState;
+  }
 };
 
 // Mental Health
@@ -147,11 +158,9 @@ export const unplannedZoomHappyHour = plusMentalHealth("mentalHealth")(3);
 export const getsPoisonOak = minusPhysicalHealth("physicalHealth")(1);
 export const hurtsLegWhileDrunk = minusPhysicalHealth("physicalHealth")(5);
 export const giftedGymEquip = plusPhysicalHealth("physicalHealth")(5);
-
 // Rolls
 export const findsTP = plusRolls("rolls")(3);
 export const diarrhea = minusRolls("rolls")(1);
-
 // Savings
 export const getsUnemployment = plusSavings("savings")(300);
 export const getsStimulus = plusSavings("savings")(1400);

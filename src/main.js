@@ -14,11 +14,14 @@ import {
 $(document).ready(function () {
   $("#health1").click(function () {
     const newState = stateControl(getsVaccinated);
-    $("#health-value").text(`Health: ${newState.physicalHealth}`);
+    $("#physical-health-value").text(`Health: ${newState.physicalHealth}`);
   });
   $("#health2").click(function () {
     const newState = stateControl(getsCovid);
-    $("#health-value").text(`Health: ${newState.physicalHealth}`);
+    $("#physical-health-value").text(
+      `Physical Health: ${newState.physicalHealth}`
+    );
+    $("#mental-health-value").text(`Mental Health: ${newState.mentalHealth}`);
     $("#rations-value").text(`Rations: ${newState.rations}`);
     $("#rolls-value").text(`Rolls: ${newState.rolls}`);
   });

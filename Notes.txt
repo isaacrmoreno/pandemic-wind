@@ -1,9 +1,12 @@
 To do list in order of importance
-Money System and create 1-2 functions
 Day System
 Randomizer helper
+Story Block Function 
 
-
+3 turns. 
+each turn has 2 options. 
+total of  6 questions. 
+end game. 
 
 
 
