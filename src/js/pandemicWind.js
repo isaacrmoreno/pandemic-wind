@@ -1,8 +1,9 @@
 // export default './js/pandemicWind.js';
 
 // Helpers
-export const storeState = () => {
+const storeState = () => {
   let currentState = {
+    days: 1,
     physicalHealth: 50,
     mentalHealth: 50,
     rations: 5,
@@ -16,6 +17,8 @@ export const storeState = () => {
   };
 };
 
+// function turn
+
 export const stateControl = storeState();
 
 function generateRandom(range) {
@@ -24,91 +27,40 @@ function generateRandom(range) {
 
 // Core Functions
 
-//Health Modifier (positive)
-export const plusPhysicalHealth = (prop) => {
+// Modifiers (Positive + Day)
+const plusValAddDay = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
       [prop]: state[prop] + (val || 0),
+      days: state[storeState.days]++,
     });
   };
+  // call turn end helper -> loop thru today's actions, and display news
 };
-//Health Modifier (negative)
-export const minusPhysicalHealth = (prop) => {
+//Modifiers (Negative + Day)
+const minusValAddDay = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
       [prop]: state[prop] - (val || 0),
+      days: state[storeState.days]++,
     });
   };
 };
 
-//Health Modifier (positive)
-export const plusMentalHealth = (prop) => {
+//Modifiers (positive)
+const plusVal = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
       [prop]: state[prop] + (val || 0),
     });
   };
+  // call turn end helper -> loop thru today's actions, and display news
 };
-//Health Modifier (negative)
-export const minusMentalHealth = (prop) => {
-  return (val) => {
-    return (state) => ({
-      ...state,
-      [prop]: state[prop] - (val || 0),
-    });
-  };
-};
-
-//Ration Modifier (positive)
-export const plusRations = (prop) => {
-  return (val) => {
-    return (state) => ({
-      ...state,
-      [prop]: state[prop] + (val || 0),
-    });
-  };
-};
-//Ration Modifier (negative)
-export const minusRations = (prop) => {
-  return (val) => {
-    return (state) => ({
-      ...state,
-      [prop]: state[prop] - (val || 0),
-    });
-  };
-};
-//Rolls Modifier (positive)
-export const plusRolls = (prop) => {
-  return (val) => {
-    return (state) => ({
-      ...state,
-      [prop]: state[prop] + (val || 0),
-    });
-  };
-};
-//Rolls Modifier (negative)
-export const minusRolls = (prop) => {
-  return (val) => {
-    return (state) => ({
-      ...state,
-      [prop]: state[prop] - (val || 0),
-    });
-  };
-};
-//Savings Modifier (positive)
-export const plusSavings = (prop) => {
-  return (val) => {
-    return (state) => ({
-      ...state,
-      [prop]: state[prop] + (val || 0),
-    });
-  };
-};
-//Savings Modifier (negative)
-export const minusSavings = (prop) => {
+//Modifiers (negative)
+const minusVal = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
@@ -120,18 +72,18 @@ export const minusSavings = (prop) => {
 // ----------- Actions ----------- //
 
 // Mental Health
-export const fileForUnemployment = plusMentalHealth("mentalHealth")(1);
+export const fileForUnemployment = plusValAddDay("mentalHealth")(1);
 // Physical Health
-export const getsVaccinated = plusPhysicalHealth("physicalHealth")(10);
-export const workout = plusPhysicalHealth("physicalHealth")(2);
+export const getsVaccinated = plusValAddDay("physicalHealth")(10);
+export const workout = plusValAddDay("physicalHealth")(2);
 // Ration
-export const groceryShopping = plusRations("rations")(14);
-export const bakeSourdough = minusRations("rations")(1);
+export const groceryShopping = plusValAddDay("rations")(14);
+export const bakeSourdough = minusValAddDay("rations")(1);
 // Rolls
-export const buysBidet = plusRolls("rolls")(100);
+export const buysBidet = plusValAddDay("rolls")(100);
 // Savings
-export const renovateKitchen = minusSavings("savings")(800);
-export const investInStockMarket = minusSavings("savings")(500);
+export const renovateKitchen = minusValAddDay("savings")(800);
+export const investInStockMarket = minusValAddDay("savings")(500);
 
 // ----------- Effects ----------- //
 
@@ -139,28 +91,28 @@ export const investInStockMarket = minusSavings("savings")(500);
 export const getsCovid = () => {
   const chance = generateRandom(100);
   if (chance > 60) {
-    let newState = stateControl(minusPhysicalHealth("physicalHealth")(20));
-    newState = stateControl(minusMentalHealth("mentalHealth")(10));
-    newState = stateControl(minusRations("rations")(10));
-    newState = stateControl(minusRolls("rolls")(5));
+    let newState = stateControl(minusVal("physicalHealth")(20));
+    newState = stateControl(minusVal("mentalHealth")(10));
+    newState = stateControl(minusVal("rations")(10));
+    newState = stateControl(minusVal("rolls")(5));
     return newState;
   } else {
-    let newState = stateControl(minusMentalHealth("mentalHealth")(10));
+    let newState = stateControl(minusVal("mentalHealth")(10));
     return newState;
   }
 };
 
 // Mental Health
-export const loseJob = minusMentalHealth("mentalHealth")(5);
-export const faceTimeMom = plusMentalHealth("mentalHealth")(3);
-export const unplannedZoomHappyHour = plusMentalHealth("mentalHealth")(3);
+export const loseJob = minusVal("mentalHealth")(5);
+export const faceTimeMom = plusVal("mentalHealth")(3);
+export const unplannedZoomHappyHour = plusVal("mentalHealth")(3);
 // Physical Health
-export const getsPoisonOak = minusPhysicalHealth("physicalHealth")(1);
-export const hurtsLegWhileDrunk = minusPhysicalHealth("physicalHealth")(5);
-export const giftedGymEquip = plusPhysicalHealth("physicalHealth")(5);
+export const getsPoisonOak = minusVal("physicalHealth")(1);
+export const hurtsLegWhileDrunk = minusVal("physicalHealth")(5);
+export const giftedGymEquip = minusVal("physicalHealth")(5);
 // Rolls
-export const findsTP = plusRolls("rolls")(3);
-export const diarrhea = minusRolls("rolls")(1);
+export const findsTP = plusVal("rolls")(3);
+export const diarrhea = minusVal("rolls")(1);
 // Savings
-export const getsUnemployment = plusSavings("savings")(300);
-export const getsStimulus = plusSavings("savings")(1400);
+export const getsUnemployment = plusVal("savings")(300);
+export const getsStimulus = plusVal("savings")(1400);
