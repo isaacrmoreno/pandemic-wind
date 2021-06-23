@@ -2,72 +2,156 @@
 
 // This function stores our state.
 export const storeState = () => {
-  let currentState = {};
-  return (stateChangeFunction = state => state) => {
+  let currentState = {
+    physicalHealth: 50,
+    mentalHealth: 50,
+    rations: 5,
+    rolls: 12,
+    savings: 2000,
+  };
+  return (stateChangeFunction = (state) => state) => {
     const newState = stateChangeFunction(currentState);
-    currentState = {...newState};
+    currentState = { ...newState };
     return newState;
   };
 };
 
 export const stateControl = storeState();
 
-// default Values
-export const _health = 50;
-export const _rations = 5;
-export const _rolls = 12;
-// const _time = 100;
+// Core Functions
 
 //Health Modifier (positive)
-export const gainHealth = (prop) => {
+export const plusPhysicalHealth = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (state[prop] || _health) + (val || 0)
+      [prop]: state[prop] + (val || 0),
     });
   };
 };
 //Health Modifier (negative)
-export const loseHealth = (prop) => {
+export const minusPhysicalHealth = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (state[prop] || _health) - (val || 0)
+      [prop]: state[prop] - (val || 0),
+    });
+  };
+};
+
+//Health Modifier (positive)
+export const plusMentalHealth = (prop) => {
+  return (val) => {
+    return (state) => ({
+      ...state,
+      [prop]: state[prop] + (val || 0),
+    });
+  };
+};
+//Health Modifier (negative)
+export const minusMentalHealth = (prop) => {
+  return (val) => {
+    return (state) => ({
+      ...state,
+      [prop]: state[prop] - (val || 0),
     });
   };
 };
 
 //Ration Modifier (positive)
-export const updateRations = (prop) => {
+export const plusRations = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (state[prop] || _rations) + (val || 0)
+      [prop]: state[prop] + (val || 0),
     });
   };
 };
-
+//Ration Modifier (negative)
+export const minusRations = (prop) => {
+  return (val) => {
+    return (state) => ({
+      ...state,
+      [prop]: state[prop] - (val || 0),
+    });
+  };
+};
 //Rolls Modifier (positive)
-export const updateRolls = (prop) => {
+export const plusRolls = (prop) => {
   return (val) => {
     return (state) => ({
       ...state,
-      [prop]: (state[prop] || _rolls) + (val || 0)
+      [prop]: state[prop] + (val || 0),
+    });
+  };
+};
+//Rolls Modifier (negative)
+export const minusRolls = (prop) => {
+  return (val) => {
+    return (state) => ({
+      ...state,
+      [prop]: state[prop] - (val || 0),
+    });
+  };
+};
+//Savings Modifier (positive)
+export const plusSavings = (prop) => {
+  return (val) => {
+    return (state) => ({
+      ...state,
+      [prop]: state[prop] + (val || 0),
+    });
+  };
+};
+//Savings Modifier (negative)
+export const minusSavings = (prop) => {
+  return (val) => {
+    return (state) => ({
+      ...state,
+      [prop]: state[prop] - (val || 0),
     });
   };
 };
 
-// Health Actions
-export const getsVaccinated = gainHealth("health")(10);
+// ----------- Actions ----------- //
+
+// Mental Health
+export const fileForUnemployment = plusMentalHealth("mentalHealth")(1);
+// Physical Health
+export const getsVaccinated = plusPhysicalHealth("physicalHealth")(10);
+export const Workout = plusPhysicalHealth("physicalHealth")(2);
+// Ration
+export const groceryShopping = plusRations("rations")(14);
+// Rolls
+export const buysBidet = plusRolls("rolls")(100);
+// Savings
+export const RenovateKitchen = minusSavings("savings")(800);
+export const InvestInStockMarket = minusSavings("savings")(500);
+
+// ----------- Effects ----------- //
+
+// Collateral Effects
 export const getsCovid = () => {
-  let newState = stateControl(loseHealth("health")(20));
-  newState = stateControl(updateRations("rations")(10));
-  newState = stateControl(updateRolls("rolls")(5));
+  let newState = stateControl(minusPhysicalHealth("physicalHealth")(20));
+  newState = stateControl(minusMentalHealth("mentalHealth")(10));
+  newState = stateControl(minusRations("rations")(10));
+  newState = stateControl(minusRolls("rolls")(5));
   return newState;
 };
-// Ration Actions
-export const groceryShopping = updateRations("rations")(14);
-// Rolls Actions
-export const findsTP = updateRolls("rolls")(3);
-export const buysBidet = updateRolls("rolls")(100);
 
+// Mental Health
+export const loseJob = minusMentalHealth("mentalHealth")(5);
+export const faceTimeMom = plusMentalHealth("mentalHealth")(3);
+export const unplannedZoomHappyHour = plusMentalHealth("mentalHealth")(3);
+// Physical Health
+export const getsPoisonOak = minusPhysicalHealth("physicalHealth")(1);
+export const hurtsLegWhileDrunk = minusPhysicalHealth("physicalHealth")(5);
+export const giftedGymEquip = plusPhysicalHealth("physicalHealth")(5);
+
+// Rolls
+export const findsTP = plusRolls("rolls")(3);
+export const diarrhea = minusRolls("rolls")(1);
+
+// Savings
+export const getsUnemployment = plusSavings("savings")(300);
+export const getsStimulus = plusSavings("savings")(1400);

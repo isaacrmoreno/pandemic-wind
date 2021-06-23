@@ -1,5 +1,75 @@
+To do list in order of importance
+Money System and create 1-2 functions
+Day System
+Randomizer helper
+
+
+
+
 
 //6/23/2021
+
+=========================
+Day Start (choose Action): 
+
+[Google Sourdough Starter] | [Drink wine and watch Tiger King for the 6th time]
+
+Day: 34  |  Health: 29  |  Rations: 5  |  Rolls: 2  |  Cash: 740
+================================================================
+
+================================
+Example Recap (effect of action):
+
+Today in the news.....  
+
+Steve decided to experiment with making sourdough bread.  The results varied but ultimately a failure. ( -2 health)
+
+Day: 34  |  Health: 27  |  Rations: 5  |  Rolls: 2  |  Cash: 740
+================================================================
+
+1 story. with two decisions. 2 methods. 
+MVP.
+
+Story Blocks
+
+First 5 days
+Themes:
+day 1: News of Corona virus in China
+day 2: rumors that we might need to quarantine for 2 weeks
+day 3: Australia catches fire.
+day 4: Tom Hanks Gets Covid.
+day 5: CDC says this shit is about to go down. 
+
+1st quarter of covid 
+Themes:
+The terror
+China fumigating the streets
+
+Isolation
+
+grocery shopping
+
+2nd quarter of covid 
+Themes:
+hobbies
+  Sourdough bread
+mental health
+exercise
+drinking
+
+
+3rd quarter of covid 
+Themes:
+drinking problem
+protests
+Restaurants shut down.
+stimulus checks go out.
+
+
+4th quarter of covid 
+Themes:
+Hope
+vaccinations
 
 Add Lose Rations & Lose Rolls methods to get Covid.
 
@@ -10,7 +80,11 @@ Add time functionality.
 What happens when you win? ("welcome to 2023")
 What happens when you die? (play again screen pops up?)
 
+Battle System (Covid? Crowds?)
+Level up
+
 Stretch Goals: Graphics. 
+
 
 // 6/22/2021 
 

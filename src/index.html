@@ -9,19 +9,34 @@
   </head>
   <body class="offset-md-3 col-md-6">
     <div class="container">
-
-        <h2>Oregon Trail</h2>
+      <h2>Oregon Trail</h2>
       <div class="grow-buttons">
-        <button class="btn-success btn-lg btn-block" id="health1">Get Vaccinated 💉</button>
-        <button class="btn-success btn-lg btn-block" id="health2">Get Covid 🤒</button>
-        <button class="btn-success btn-lg btn-block" id="rations3">Go Grocery Shopping 🛍️</button>
-        <button class="btn-success btn-lg btn-block" id="rolls4">Find Toilet Paper 🧻</button>
-        <button class="btn-success btn-lg btn-block" id="rolls5">Buy Bidet 🚽</button>
+        <button class="btn-success btn-lg btn-block" id="health1">
+          Get Vaccinated 💉
+        </button>
+        <button class="btn-success btn-lg btn-block" id="health2">
+          Get Covid 🤒
+        </button>
+        <button class="btn-success btn-lg btn-block" id="rations3">
+          Go Grocery Shopping 🛍️
+        </button>
+        <button class="btn-success btn-lg btn-block" id="rolls4">
+          Find Toilet Paper 🧻
+        </button>
+        <button class="btn-success btn-lg btn-block" id="rolls5">
+          Buy Bidet 🚽
+        </button>
       </div>
       <h1>Game State</h1>
-      <h3><div id="health-value">0</div></h3>
-      <h3><div id="rations-value">0</div></h3>
-      <h3><div id="rolls-value">0</div></h3>
+      <div id="show-state">
+        <ul>
+          <li id="day-value">0</li>
+          <li id="health-value">0</li>
+          <li id="rations-value">0</li>
+          <li id="rolls-value">0</li>
+          <li id="savings-value">0</li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
