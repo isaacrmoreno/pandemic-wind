@@ -116,3 +116,12 @@ Player Health 50
 // GetsVaccine +10
 
 // Win State = 100 days with positive health
+
+
+
+two variables 
+1 moves
+1 days
+
+Moves progress 1 time for each action (game over at 40 moves)
+Days progresses between 1-14 for each action

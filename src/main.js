@@ -9,11 +9,13 @@ import {
   getsCovid,
   buysBidet,
   findsTP,
+  getsStimulus,
 } from "./js/pandemicWind.js";
 
 $(document).ready(function () {
   $("#health1").click(function () {
     const newState = stateControl(getsVaccinated);
+    $("#day-value").text(`Day: ${newState.day}`);
     $("#physical-health-value").text(
       `Physical Health: ${newState.physicalHealth}`
     );
@@ -29,6 +31,7 @@ $(document).ready(function () {
   });
   $("#rations3").click(function () {
     const newState = stateControl(groceryShopping);
+    $("#day-value").text(`Day: ${newState.day}`);
     $("#rations-value").text(`Rations: ${newState.rations}`);
   });
   $("#rolls4").click(function () {
@@ -37,7 +40,12 @@ $(document).ready(function () {
   });
   $("#rolls5").click(function () {
     const newState = stateControl(buysBidet);
+    $("#day-value").text(`Day: ${newState.day}`);
     $("#rolls-value").text(`Rolls: ${newState.rolls}`);
+  });
+  $("#savings6").click(function () {
+    const newState = stateControl(getsStimulus);
+    $("#savings-value").text(`Savings: ${newState.savings}`);
   });
 
   $("#show-state").show(function () {
@@ -50,6 +58,7 @@ $(document).ready(function () {
     );
     $("#rations-value").text(`Rations: ${currentState.rations}`);
     $("#rolls-value").text(`Rolls: ${currentState.rolls}`);
-    $("#savings-value").text(`Savings: ${currentState.rolls}`);
+    $("#savings-value").text(`Savings: ${currentState.savings}`);
+    $("#day-value").text(`Day: ${currentState.day}`);
   });
 });
