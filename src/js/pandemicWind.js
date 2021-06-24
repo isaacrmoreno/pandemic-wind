@@ -1,27 +1,88 @@
 // export default './js/pandemicWind.js';
 
-// const storyLine = [
+const storyLine = [
+  "Actor Tom Hanks announces he and his wife, Rita Wilson, tested positive for corona virus in Australia.",
+  "Major League Baseball suspends spring training indefinitely because of COVID-19 concerns",
+  "The Los Angeles Unified School District announces that it will close all its schools." ,
+  "The Dow Jones industrial average falls by 2,997.10, the largest single-move point drop ever, amid the corona virus outbreak.",
+  "The worldwide corona Virus death toll passes 10,000.",
+  "One million Californians file for unemployment and The Senate and the White House agree to a $2-trillion stimulus package to boost the economy, the largest stimulus package in U.S. history.",
+  "The U.S. Now Leads the World in Confirmed Corona Virus Cases.",
+  "New York passes 75,000 corona Virus cases. The U.S. has more than 163,000 reported cases, as COVID-19 death toll reaches 3,000. Seventy percent of the U.S. population is under lock down.",
+  "The number of corona virus cases worldwide passes 1 million. More than 6.6 million workers file for unemployment in the United States.",
+  "The CDC recommends that everyone consider wearing cloth or fabric face masks in public.",
+  
+  "Boris Johnson is hospitalized with COVID-19.",
+  "The United States becomes the first country to report 2,000 corona virus deaths in a single move.",
+  "The IRS begins sending stimulus checks to Americans.",
+  "Texas becomes the first state to begin easing pandemic restrictions.",
+  "The U.S. death toll from COVID-19 surpasses 50,000.",
+  "The U.S. faces invasion of 'murder hornets,' which threaten domestic bees.",
+  "Gregory and Travis McMichael are charged with murder in the shoot death of Ahmaud Arbery in Georgia.",
+  "Unemployment rate rises to record high 14.7 percent.",
+  "Worldwide corona virus deaths surpass 300,000.",
+  "Minneapolis police officer is filmed while pressing his knee on the neck of George Floyd for about eight minutes, killing him, as three other officers stand by. Video of Floyd’s death goes viral; the four officers are fired the next move.",
+  
+  "A state of emergency is declared in Minneapolis-St. Paul as protests over the death of George Floyd and racial injustice spread nationwide.",
+  "SpaceX Lifts NASA Astronauts to Orbit, Launching New Era of Spaceflight.",
+  "Over 4,400 Arrests, 62,000 National Guard Troops Deployed: George Floyd Protests By The Numbers.",
+  "Confederate statues are coming down following George Floyd's death. Here's what we know.",
+  "John Lewis, Towering Figure of Civil Rights Era, Dies at 80.",
+  "President Trump announces a 'surge' of federal officers into Democratic-run cities, following a crackdown on protests in Portland, Ore.",
+  "Nearly three billion animals killed or displaced by Australia's fires.",
+  "More than 400,000 people, most without face masks and who don’t follow social distancing guidelines, participate in activities related to the Sturgis Motorcycle Rally in South Dakota.",
+  "Thunderstorms trigger hundreds of wildfires in California, prompting evacuations as a record-breaking heat wave taxes the state’s power grid.",
+  "Oregon wildfires start amid severe drought and severe winds; by the end of October, more than 1 million acres will burn, more than 4,000 homes will be destroyed, and at least 10 people will be killed.",
 
-//   // day 1-5
-// [],
+  "Western wildfires: An 'unprecedented,' climate change-fueled event, experts say.",
+  "WHO Estimates Corona virus Has Infected 10% of Global Population.",
+  "Google Abuses Its Monopoly Power Over Search, Justice Department Says In Lawsuit.",
+  "The NBA bubble was a one-of-a-kind COVID-19 success story.",
+  "Record-Setting Fires in Colorado and California.",
+  "U.S. Officially Leaving Paris Climate Agreement.",
+  "US troops in Afghanistan: Allies and Republicans alarmed at withdrawal plan.",
+  "Joe Biden breaks Obama's record for most votes ever cast for a U.S. presidential candidate.",
+  "U.S. and States Say Facebook Illegally Crushed Competition.",
+  "Dec. 14: The electoral college confirms Joe Biden’s victory over President Trump.",
+  "More than 317,000 people in the U.S. have died from COVID-19; the international death toll is 1.69 million."
+];
+// function changeWind() {
+//   if (move === 1) {
+//     return storyLine[0][1];
+//   }
+// }
 
-// [],
-
-// [],
-
-// [],
-
-// []
-// ]
-
-// move 33
-// state[move][0] = 1 + position
+let move = storeState[move];
+switch (move) {
+case 0:
+  outputTextLine1 = "Actor Tom Hanks announces he and his wife, Rita Wilson, tested positive for corona virus in Australia.";
+  outputTextLine2 = `${groceryShopping()}`;
+  break;
+case 1:
+  move = "2";
+  break;
+case 2:
+  move = "3";
+  break;
+case 3:
+  move = "4";
+  break;
+case 4:
+  move = "5";
+  break;
+case 5:
+  move = "Frimove";
+  getsCovid();
+  break;
+case 6:
+  move = "Saturmove";
+}
 
 // Helpers
 const storeState = () => {
   let currentState = {
     move: 0,
-    day: 0,
+    move: 0,
     physicalHealth: 50,
     mentalHealth: 50,
     rations: 5,
@@ -45,7 +106,7 @@ function generateRandom(range) {
 
 // Core Functions
 
-// Modifiers (Update Prop Value + Days - rations)
+// Modifiers (Update Prop Value + moves - rations)
 const updateValAndProgressStory = (prop) => {
   const randomNum = (state) => {
     if (state.rations < 14) {
@@ -62,7 +123,7 @@ const updateValAndProgressStory = (prop) => {
       ...state,
       [prop]: state[prop] + (val || 0),
       move: state.move + 1,
-      day: state.day + randomNum(state),
+      move: state.move + randomNum(state),
       rations: state.rations - randomNum(state),
     });
   };
