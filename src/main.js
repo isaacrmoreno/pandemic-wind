@@ -10,7 +10,24 @@ import {
   buysBidet,
   findsTP,
   getsStimulus,
+  storyLine,
 } from "./js/pandemicWind.js";
+
+function changeWind() {
+  if (move === 1) {
+    return storyLine[0][1];
+  } else if (move === 2) {
+    return storyLine[0][1];
+  } else if (move === 2) {
+    return storyLine[0][1];
+  }
+}
+
+
+
+
+
+
 
 $(document).ready(function () {
   $("#health1").click(function () {

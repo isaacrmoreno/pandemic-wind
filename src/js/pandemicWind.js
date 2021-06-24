@@ -46,42 +46,16 @@ const storyLine = [
   "Dec. 14: The electoral college confirms Joe Biden’s victory over President Trump.",
   "More than 317,000 people in the U.S. have died from COVID-19; the international death toll is 1.69 million."
 ];
-// function changeWind() {
-//   if (move === 1) {
-//     return storyLine[0][1];
-//   }
-// }
 
-let move = storeState[move];
-switch (move) {
-case 0:
-  outputTextLine1 = "Actor Tom Hanks announces he and his wife, Rita Wilson, tested positive for corona virus in Australia.";
-  outputTextLine2 = `${groceryShopping()}`;
-  break;
-case 1:
-  move = "2";
-  break;
-case 2:
-  move = "3";
-  break;
-case 3:
-  move = "4";
-  break;
-case 4:
-  move = "5";
-  break;
-case 5:
-  move = "Frimove";
-  getsCovid();
-  break;
-case 6:
-  move = "Saturmove";
-}
+const Actions = {
+  "Get Vaccinated (+20 health)": [getsVaccinated(),groceryShopping()], 
+  "Go Grocery Shopping (+14 rations)": groceryShopping(), 
+};
+
 
 // Helpers
 const storeState = () => {
   let currentState = {
-    move: 0,
     move: 0,
     physicalHealth: 50,
     mentalHealth: 50,
